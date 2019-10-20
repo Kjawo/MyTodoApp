@@ -18,20 +18,18 @@
     <h1>MyNotes</h1>
 </div>
 <div id="todoListView" class="container"></div>
-<div class="container">
-    <form class="form-inline">
-        <label>Title</label>
-        <input type="text" id="inputTitle" class="form-control input-sm"/>
-        <label>Description</label>
-        <input type="text" id="inputDescription" class="form-control"/>
-        <label>Place</label>
-        <input type="text" id="inputPlace" class="form-control"/>
-        <label>Due date</label>
-        <input type="date" id="inputDate" class="form-control"/>
+
+<div class="center-block">
+    <form class="form-inline justify-content-center">
+        <label for="inputTitle">Title</label><input type="text" id="inputTitle" class="form-control input-sm"/>
+        <label for="inputDescription">Description</label><input type="text" id="inputDescription" class="form-control"/>
+        <label for="inputPlace">Place</label><input type="text" id="inputPlace" class="form-control"/>
+        <label for="inputDate">Due date</label><input type="date" id="inputDate" class="form-control"/>
         <input type="button" value="add"
                onclick="addTodo()" class="btn btn-primary"/>
     </form>
 </div>
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
         integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"

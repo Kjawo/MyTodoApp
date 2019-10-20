@@ -61,7 +61,8 @@ let updateJSONbin = function () {
 
 let updateTodoList = function () {
     let todoListDiv =
-        document.getElementById("todoListView");
+        //document.getElementById("todoListView");
+        $('#todoListView')[0];
 
 
     //remove all elements
@@ -70,7 +71,8 @@ let updateTodoList = function () {
     }
 
 //add all elements
-    let filterInput = document.getElementById("inputSearch");
+    //let filterInput = document.getElementById("inputSearch");
+    let filterInput = $('#inputSearch')[0];
     let newTable = document.createElement("table");
     newTable.setAttribute('class', "table table-bordered")
 
@@ -88,9 +90,14 @@ let updateTodoList = function () {
     let newPlaceContent = document.createTextNode("Place");
     newPlaceHeader.appendChild(newPlaceContent);
 
+    let newDateHeader = document.createElement("th");
+    let newDateContent = document.createTextNode("Date");
+    newDateHeader.appendChild(newDateContent);
+
     newHeaderRow.appendChild(newTitleHeader);
     newHeaderRow.appendChild(newDescriptionHeader);
     newHeaderRow.appendChild(newPlaceHeader);
+    newHeaderRow.appendChild(newDateHeader);
     newTable.appendChild(newHeaderRow);
 
 
@@ -116,6 +123,10 @@ let updateTodoList = function () {
             let newPlaceContent = document.createTextNode(todoList[todo].place);
             newPlaceCell.appendChild(newPlaceContent);
 
+            let newDateCell = document.createElement("td");
+            let newDateContent = document.createTextNode(todoList[todo].dueDate);
+            newDateCell.appendChild(newDateContent);
+
             let newDeleteCell = document.createElement("td");
             let newDeleteButton = document.createElement("input");
             newDeleteButton.type = "button";
@@ -130,6 +141,7 @@ let updateTodoList = function () {
             newRow.appendChild(newTitleCell);
             newRow.appendChild(newDescriptionCell);
             newRow.appendChild(newPlaceCell);
+            newRow.appendChild(newDateCell);
             newRow.appendChild(newDeleteCell);
         }
 
@@ -147,12 +159,12 @@ let deleteTodo = function (index) {
 };
 
 let addTodo = function () {
-    updateJSONbin();
+    //let inputTitle = document.getElementById("inputTitle");
+    let inputTitle = $("#inputTitle")[0];
     //get the elements in the form
-    let inputTitle = document.getElementById("inputTitle");
-    let inputDescription = document.getElementById("inputDescription");
-    let inputPlace = document.getElementById("inputPlace");
-    let inputDate = document.getElementById("inputDate");
+    let inputDescription = $("#inputDescription")[0];
+    let inputPlace = $("#inputPlace")[0];
+    let inputDate = $("#inputDate")[0];
     //get the values from the form
     let newTitle = inputTitle.value;
     let newDescription = inputDescription.value;
@@ -167,5 +179,6 @@ let addTodo = function () {
     };
     //add item to the list
     todoList.push(newTodo);
-    window.localStorage.setItem("todos", JSON.stringify(todoList));
+    //window.localStorage.setItem("todos", JSON.stringify(todoList));
+    updateJSONbin();
 };
