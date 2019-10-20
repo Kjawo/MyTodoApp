@@ -71,18 +71,42 @@ let updateTodoList = function () {
 
 //add all elements
     let filterInput = document.getElementById("inputSearch");
+    let newTable = document.createElement("table");
+
+    let newHeaderRow = document.createElement("tr");
+
+    let newTitleHeader = document.createElement("th");
+    let newTitleContent = document.createTextNode("Title");
+    newTitleHeader.appendChild(newTitleContent);
+
+    let newDescriptionHeader = document.createElement("th");
+    let newDescriptionContent = document.createTextNode("Description");
+    newDescriptionHeader.appendChild(newDescriptionContent);
+
+    newHeaderRow.appendChild(newTitleHeader);
+    newHeaderRow.appendChild(newDescriptionHeader);
+    newTable.appendChild(newHeaderRow);
+
+
+
     for (let todo in todoList) {
+
+        let newRow = document.createElement("tr");
+
         if (
             (filterInput.value === "") ||
             (todoList[todo].title.includes(filterInput.value)) ||
             (todoList[todo].description.includes(filterInput.value))
         ) {
-            let newElement = document.createElement("p");
-            let newContent = document.createTextNode(todoList[todo].title + " " +
-                todoList[todo].description);
-            newElement.appendChild(newContent);
-            todoListDiv.appendChild(newElement);
+            let newTitleCell = document.createElement("td");
+            let newTitleContent = document.createTextNode(todoList[todo].title);
+            newTitleCell.appendChild(newTitleContent);
 
+            let newDescriptionCell = document.createElement("td");
+            let newDescriptionContent = document.createTextNode(todoList[todo].description);
+            newDescriptionCell.appendChild(newDescriptionContent);
+
+            let newDeleteCell = document.createElement("td");
             let newDeleteButton = document.createElement("input");
             newDeleteButton.type = "button";
             newDeleteButton.value = "x";
@@ -90,9 +114,16 @@ let updateTodoList = function () {
                 function () {
                     deleteTodo(todo);
                 });
-            newElement.appendChild(newDeleteButton);
+            newDeleteCell.appendChild(newDeleteButton);
+
+            newRow.appendChild(newTitleCell);
+            newRow.appendChild(newDescriptionCell);
+            newRow.appendChild(newDeleteCell);
         }
+
+        newTable.appendChild(newRow);
     }
+    todoListDiv.appendChild(newTable);
 
 };
 
