@@ -72,6 +72,7 @@ let updateTodoList = function () {
 //add all elements
     let filterInput = document.getElementById("inputSearch");
     let newTable = document.createElement("table");
+    newTable.setAttribute('class', "table table-bordered")
 
     let newHeaderRow = document.createElement("tr");
 
@@ -83,8 +84,13 @@ let updateTodoList = function () {
     let newDescriptionContent = document.createTextNode("Description");
     newDescriptionHeader.appendChild(newDescriptionContent);
 
+    let newPlaceHeader = document.createElement("th");
+    let newPlaceContent = document.createTextNode("Place");
+    newPlaceHeader.appendChild(newPlaceContent);
+
     newHeaderRow.appendChild(newTitleHeader);
     newHeaderRow.appendChild(newDescriptionHeader);
+    newHeaderRow.appendChild(newPlaceHeader);
     newTable.appendChild(newHeaderRow);
 
 
@@ -106,6 +112,10 @@ let updateTodoList = function () {
             let newDescriptionContent = document.createTextNode(todoList[todo].description);
             newDescriptionCell.appendChild(newDescriptionContent);
 
+            let newPlaceCell = document.createElement("td");
+            let newPlaceContent = document.createTextNode(todoList[todo].place);
+            newPlaceCell.appendChild(newPlaceContent);
+
             let newDeleteCell = document.createElement("td");
             let newDeleteButton = document.createElement("input");
             newDeleteButton.type = "button";
@@ -114,10 +124,12 @@ let updateTodoList = function () {
                 function () {
                     deleteTodo(todo);
                 });
+            newDeleteButton.setAttribute('class', "btn btn-danger")
             newDeleteCell.appendChild(newDeleteButton);
 
             newRow.appendChild(newTitleCell);
             newRow.appendChild(newDescriptionCell);
+            newRow.appendChild(newPlaceCell);
             newRow.appendChild(newDeleteCell);
         }
 
