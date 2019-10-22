@@ -65,10 +65,11 @@ let updateTodoList = function () {
         $('#todoListView')[0];
 
 
-    //remove all elements
+    // remove all elements
     while (todoListDiv.firstChild) {
         todoListDiv.removeChild(todoListDiv.firstChild);
     }
+    // $("todoListDiv").empty();
 
 //add all elements
     //let filterInput = document.getElementById("inputSearch");
@@ -101,16 +102,30 @@ let updateTodoList = function () {
     newTable.appendChild(newHeaderRow);
 
 
-
     for (let todo in todoList) {
 
         let newRow = document.createElement("tr");
 
+        // if (
+        //     (filterInput.value === "") ||
+        //     (todoList[todo].title.includes(filterInput.value)) ||
+        //     (todoList[todo].description.includes(filterInput.value)
+        //         (((todoList[todo].dueDate >= $('#fromDate')[0].value) &&
+        //             (todoList[todo].dueDate <= $('#toDate')[0].value)) ||
+        //             ($('#fromDate')[0].value === "" ||
+        //                 $('#toDate')[0].value === ""))
+        //
+        //     )) {
         if (
             (filterInput.value === "") ||
             (todoList[todo].title.includes(filterInput.value)) ||
-            (todoList[todo].description.includes(filterInput.value))
-        ) {
+            (todoList[todo].description.includes(filterInput.value)
+                (((todoList[todo].dueDate >= $('#fromDate')[0].value) &&
+                    (todoList[todo].dueDate <= $('#toDate')[0].value)) ||
+                    ($('#fromDate')[0].value === "" ||
+                        $('#toDate')[0].value === ""))
+
+            )) {
             let newTitleCell = document.createElement("td");
             let newTitleContent = document.createTextNode(todoList[todo].title);
             newTitleCell.appendChild(newTitleContent);
@@ -154,8 +169,8 @@ let updateTodoList = function () {
 setInterval(updateTodoList, 1000);
 
 let deleteTodo = function (index) {
-    updateJSONbin();
     todoList.splice(index, 1);
+    updateJSONbin();
 };
 
 let addTodo = function () {
