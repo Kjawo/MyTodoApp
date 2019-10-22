@@ -134,7 +134,7 @@ let updateTodoList = function () {
             let newDeleteButton = document.createElement("input");
             newDeleteButton.type = "button";
             newDeleteButton.value = "x";
-            newDeleteButton.addEventListener("click",
+            newDeleteButton.addEventListener("mousedown",
                 function () {
                     deleteTodo(todo);
                 });
