@@ -106,26 +106,14 @@ let updateTodoList = function () {
 
         let newRow = document.createElement("tr");
 
-        // if (
-        //     (filterInput.value === "") ||
-        //     (todoList[todo].title.includes(filterInput.value)) ||
-        //     (todoList[todo].description.includes(filterInput.value)
-        //         (((todoList[todo].dueDate >= $('#fromDate')[0].value) &&
-        //             (todoList[todo].dueDate <= $('#toDate')[0].value)) ||
-        //             ($('#fromDate')[0].value === "" ||
-        //                 $('#toDate')[0].value === ""))
-        //
-        //     )) {
-        if (
-            (filterInput.value === "") ||
-            (todoList[todo].title.includes(filterInput.value)) ||
-            (todoList[todo].description.includes(filterInput.value)
-                (((todoList[todo].dueDate >= $('#fromDate')[0].value) &&
-                    (todoList[todo].dueDate <= $('#toDate')[0].value)) ||
-                    ($('#fromDate')[0].value === "" ||
-                        $('#toDate')[0].value === ""))
-
-            )) {
+        if (((filterInput.value === "") ||
+        (todoList[todo].title.includes(filterInput.value)) ||
+        (todoList[todo].description.includes(filterInput.value))) &&
+            (((todoList[todo].dueDate >= $('#fromDate')[0].value) &&
+                (todoList[todo].dueDate <= $('#toDate')[0].value)) ||
+                ($('#fromDate')[0].value === "" ||
+                    $('#toDate')[0].value === ""))) 
+        {
             let newTitleCell = document.createElement("td");
             let newTitleContent = document.createTextNode(todoList[todo].title);
             newTitleCell.appendChild(newTitleContent);
